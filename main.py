@@ -1,4 +1,6 @@
+
 from PyQt6 import QtCore, QtGui, QtWidgets
+import logging
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -30,10 +32,12 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "PushButton"))
 
     def print_hello(self):
+        logging.info("hello")
         print("hello")
 
 if __name__ == "__main__":
     import sys
+    logging.basicConfig(level=logging.INFO)
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

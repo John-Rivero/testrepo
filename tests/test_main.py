@@ -1,14 +1,8 @@
 import unittest
-from PyQt6 import QtWidgets, QtCore
-
+from PyQt6 import QtWidgets
+from main import Ui_MainWindow
 import sys
 from io import StringIO
-import os
-
-
-# Add the directory containing 'main.py' to the Python path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from main import Ui_MainWindow
 
 class TestMainWindow(unittest.TestCase):
     def setUp(self):
@@ -20,7 +14,7 @@ class TestMainWindow(unittest.TestCase):
         self.MainWindow.show()
 
     def test_button_click(self):
-        """Test if button click prints 'hello'."""
+        """Test if button click prints 'hello', 'test', and 'This is second test'."""
         button = self.ui.pushButton
 
         # Redirect stdout to capture print statements
@@ -34,7 +28,10 @@ class TestMainWindow(unittest.TestCase):
         sys.stdout = sys.__stdout__
 
         # Check the output
-        self.assertIn('hello', captured_output.getvalue())
+        output = captured_output.getvalue()
+        self.assertIn('hello', output)
+        self.assertIn('test', output)
+        self.assertIn('This is second test', output)
 
     def tearDown(self):
         """Clean up the application."""

@@ -29,7 +29,7 @@ class TestMainWindow(unittest.TestCase):
 
         # Check the output
         output = captured_output.getvalue()
-        self.assertIn('hello', output)
+        self.assertIn('hello2', output)
 
 
     def tearDown(self):

@@ -30,7 +30,7 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "PushButton"))
 
     def print_hello(self):
-        print("hello")
+        print("hello2")
 
 
 

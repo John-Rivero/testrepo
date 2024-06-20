@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout code
@@ -16,14 +16,13 @@ jobs:
       with:
         python-version: '3.11.3'
 
-    - name: Install dependencies
+    - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-
     - name: Set PYTHONPATH
-      run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
+      run: echo "PYTHONPATH=${{ github.workspace }}" >> $Env:GITHUB_ENV
 
     - name: Run tests
       run: |

@@ -1,5 +1,8 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
+# This is a minor change to trigger the CI workflow
+
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")

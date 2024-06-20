@@ -32,7 +32,7 @@ class Ui_MainWindow(object):
     def print_hello(self):
         print("hello")
         print("test")
-        print("This is third test")
+        print("This is fourth test")
 
 
 if __name__ == "__main__":

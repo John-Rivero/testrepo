@@ -42,7 +42,7 @@ jobs:
 
     - name: Package application with PyInstaller
       run: |
-        pyinstaller --onefile main.py
+        pyinstaller  main.py
 
     - name: Archive the build output
       uses: actions/upload-artifact@v2

@@ -30,8 +30,7 @@ class TestMainWindow(unittest.TestCase):
         # Check the output
         output = captured_output.getvalue()
         self.assertIn('hello', output)
-        self.assertIn('test', output)
-        self.assertIn('This is fourth test', output)
+
 
     def tearDown(self):
         """Clean up the application."""

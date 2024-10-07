@@ -43,7 +43,7 @@ class Ui_MainWindow(object):
     def display_dataframe(self):
         # Create a sample DataFrame
         data = {
-            "Name": ["Alice", "Bob", "Charlie", "Diana"],
+            "Name": ["Bro", "Bob", "Charlie", "Diana"],
             "Age": [25, 30, 35, 28],
             "Department": ["HR", "Engineering", "Marketing", "Design"],
             "Salary": [50000, 70000, 60000, 65000]

@@ -21,7 +21,7 @@ def test_display_dataframe():
     
     # Define the expected DataFrame and its HTML representation
     data = {
-        "Name": ["Alice", "Bob", "Charlie", "Diana"],
+        "Name": ["Bro", "Bob", "Charlie", "Diana"],
         "Age": [25, 30, 35, 28],
         "Department": ["HR", "Engineering", "Marketing", "Design"],
         "Salary": [50000, 70000, 60000, 65000]

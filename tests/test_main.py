@@ -1,36 +1,48 @@
-# tests/test_main.py
-
-import pytest
-from unittest.mock import MagicMock
-from main import Ui_MainWindow
+import unittest
 import pandas as pd
-from PyQt6 import QtCore
+from unittest.mock import MagicMock
+from Shared_B_AdhocTracker_Logic_Page import AdhocTrackerButtonFunctionality
+import datetime as datetime
+import Shared_B_Credentials_Logic_Page as Shared_B_Credentials_Logic_Page
 
-def test_display_dataframe():
-    # Create a mock for QLabel
-    mock_label = MagicMock()
-    
-    # Create an instance of Ui_MainWindow
-    ui = Ui_MainWindow()
-    
-    # Assign the mock label to the ui
-    ui.label = mock_label
-    
-    # Call the display_dataframe method
-    ui.display_dataframe()
-    
-    # Define the expected DataFrame and its HTML representation
-    data = {
-        "Name": ["Bro", "Bob", "Charlie", "Diana"],
-        "Age": [25, 30, 35, 28],
-        "Department": ["HR", "Engineering", "Marketing", "Design"],
-        "Salary": [50000, 70000, 60000, 65000]
-    }
-    df = pd.DataFrame(data)
-    expected_html = df.to_html(index=False)
-    
-    # Check that setText was called with expected_html
-    mock_label.setText.assert_called_with(expected_html)
-    
-    # Check that setTextFormat was called with RichText
-    mock_label.setTextFormat.assert_called_with(QtCore.Qt.TextFormat.RichText)
+class TestAdhocTrackerFunctionality(unittest.TestCase):
+
+    def test_process_input_data_with_valid_text(self):
+        """Test process_input_data with a valid text input."""
+        
+        # Initialize the necessary test inputs
+        sender_info_singlelocation = "U131234"
+        link_singlelocation2 = '<a href="http://example.com">Example</a>'
+        ValidityFrom_singlelocation = "12/12/2024"
+        ValidityTo_singlelocation = "12/13/2024"
+        airlineselection = '4O - Interjet'
+        cscselection = 'BUR 1382'
+        projectmessage = "Test message"
+        priorityselection = 'Low'
+
+        # Create a mock message object with a 'close' method
+        msg = MagicMock()
+        msg.close = MagicMock()
+
+        # Call the process_input_data function
+        result = AdhocTrackerButtonFunctionality.SingleLocation_Submit_button_logic(
+            sender_info_singlelocation, link_singlelocation2, 
+            ValidityFrom_singlelocation, ValidityTo_singlelocation, 
+            airlineselection, cscselection, projectmessage, 
+            priorityselection, msg  # Pass the mock msg object
+        )
+
+        # Define expected output
+        currentprojects_data = {
+            'current_department': 'Data Management',
+            'current_analyst': 'Unassigned',
+        }
+        expected_output = pd.DataFrame([currentprojects_data])
+        print(expected_output)
+        
+        # Check if the returned dataframe is as expected
+        pd.testing.assert_frame_equal(result, expected_output)
+
+# Run the test
+if __name__ == "__main__":
+    unittest.main()
